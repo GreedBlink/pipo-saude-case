@@ -11,7 +11,7 @@ specialties = DBI::dbGetQuery(conn, 'select * from specialties')
 specialties_opt = specialties$specialty_denormalized_name
 names(specialties_opt) = specialties$specialty_name
 
-# Definindo a interface do usuário
+
 ui <- dashboardPage(
   header = dashboardHeader(
     title = "Pipo Saúde"
@@ -76,15 +76,15 @@ ui <- dashboardPage(
           
         ),
         reactable::reactableOutput('providerList')
-        # Adicione aqui os elementos de interface do usuário para buscar prestadores
+        
       )
     )
   )
 )
 
-# Definindo o servidor
+
 server <- function(input, output) {
-  # Adicione aqui a lógica do servidor para buscar prestadores
+  
   
   
   observeEvent(input$search,{
@@ -138,5 +138,4 @@ server <- function(input, output) {
   
 }
 
-# Executando o aplicativo
 shinyApp(ui, server)
