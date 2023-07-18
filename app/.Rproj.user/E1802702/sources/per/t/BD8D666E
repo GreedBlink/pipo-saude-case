@@ -1,0 +1,26 @@
+{
+    "id": "BD8D666E",
+    "path": "~/Documents/workspace/pipo-test/app/app.R",
+    "project_path": "app.R",
+    "type": "r_source",
+    "hash": "2575529037",
+    "contents": "",
+    "dirty": false,
+    "created": 1689599898615.0,
+    "source_on_save": false,
+    "relative_order": 1,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "118,5",
+        "scrollLine": "102"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1689606319,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1689606319993,
+    "read_only": false,
+    "read_only_alternatives": []
+}

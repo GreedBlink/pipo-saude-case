@@ -1,0 +1,11 @@
+specialty_name,specialty_denormalized_name,id
+Clínica médica,clinica_medica,1
+Pediatria,pediatria,2
+Ginecologia e Obstetrícia,ginecologia_e_obstetricia,3
+Medicina interna,medicina_interna,4
+Cirurgia geral,cirurgia_geral,5
+Ortopedia,ortopedia,6
+Cardiologia,cardiologia,7
+Dermatologia,dermatologia,8
+Oftamologia,oftamologia,9
+Psiquiatria,psiquiatria,10

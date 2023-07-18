@@ -1,0 +1,9 @@
+experiment:
+  model:
+    sample_size: 1000
+    seed: 42
+  database:
+    dbml_project_name: "HealthProvider"
+    dbml: "./database.dbml"
+    build: true
+    data_output_file: "./data/output"

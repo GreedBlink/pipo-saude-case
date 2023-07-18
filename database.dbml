@@ -1,0 +1,105 @@
+Project HealthProvider {
+    database_type: 'PostgreSQL'
+    Note: "This is a health provider database project"
+}
+
+Table  specialties{
+    specialty_id int [pk, increment]
+    specialty_name varchar
+    specialty_denormalized_name varchar
+    note: 'Specialties that healthcare providers offer to costumers'
+    
+}
+
+Table accommodation {
+    accommodation_id int [pk, increment]
+    accommodation_name varchar 
+    accommodation_denormalized_name varchar 
+    note: 'Infrastructure of accommodations in providers that offer hospitalization'
+    
+}
+
+Table certification {
+    certification_id int [pk, increment]
+    certification_type varchar  [not null]
+    certification_name varchar [not null]
+    certification_denormalized_name varchar [not null]
+    note: '''
+    Certification for health provider or health specialty
+    
+    The options are: 
+    - Provider facilities: 
+        - **ANO**, National accreditation Organization
+        - **MRP**, Medical redidential program
+        - **HAP**, Hospital accreditation program
+    - Provider professional
+        - **E**, for especialtie in certain area
+    '''
+}
+
+Table health_provider {
+    provider_id int [pk]
+    provider_name varchar [not null]
+    zip_code numeric [not null]
+    latitude numeric
+    longitude numeric
+    uf numeric [not null]
+    //emergency_attendence bool
+    online_service bool
+    //hospitalization bool
+    weekend_service bool
+    provider_created_at datetime [default: `now()`]
+    note: 'Health provider base informations'
+}
+
+Table provider_accommodation {
+    id int [pk, increment]
+    accommodation_id int [ref: > accommodation.accommodation_id]
+    provider_id int [ref: > health_provider.provider_id]
+    note: 'This is a transaction table for provider accomodations'
+}
+
+Table provider_specialties {
+    id int [pk, increment]
+    specialty_id int [ref: > specialties.specialty_id]
+    provider_id int [ref: > health_provider.provider_id]
+    note: 'This is a transaction table for provider specialties'
+}
+
+Table provider_certification {
+    id int [pk, increment]
+    certification_id int [ref: > certification.certification_id]
+    provider_id int [ref: > health_provider.provider_id]
+    note: 'This is a transaction table for provider and profissional certifications'
+}
+
+Table health_provider_services {
+    id int [pk, increment]
+    provider_id int [ref: > health_provider.provider_id]
+    service_id varchar [not null]
+    service_name varchar [not null]
+    service_cost float [not null]
+    specialty_name varchar [not null]
+    note: 'Table transactional for health provider services costs'
+    
+}
+
+Table service_evaluation {
+    id int [pk, increment]
+    provider_id int [ref: > health_provider.provider_id]
+    score_quality int
+    score_facilites int
+    score_attendance int
+    note: 'Service user evaluation'
+}
+
+Table provider_score {
+    id int [pk, increment]
+    provider_id int [ref: > health_provider.provider_id]
+    servico_comp numeric [not null]
+    custo_comp numeric [not null]
+    avaliacao_comp numeric [not null]
+    score numeric [not null]
+    inserted_at datetime [default: `now()`]
+}
+
